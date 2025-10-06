@@ -1,0 +1,76 @@
+/* Estilos personalizados para o EduPlatform */
+
+/* Estilos gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 160px 0 100px;
+    color: white;
+}
+
+/* Feature icons */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+
+/* Course cards */
+.course-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.course-category {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #ffd700, #ff6b6b);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%), url('../images/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+/* Utility classes */
+.py-lg-7 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.rounded-4 {
+    border-radius: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 120px 0 60px;
+    }
+}

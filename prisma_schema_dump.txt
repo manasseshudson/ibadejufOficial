@@ -1,0 +1,227 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model tb_acessos {
+  id_acessos Int     @id
+  Usuario    String? @db.VarChar(999)
+  Senha      String? @db.VarChar(999)
+  Sistema    String? @db.VarChar(999)
+  Data       String? @db.VarChar(999)
+  Hora       String? @db.VarChar(999)
+  Nome       String? @db.VarChar(999)
+}
+
+model tb_aluno {
+  id_aluno               Int      @id
+  nome                   String?  @db.VarChar(999)
+  email                  String?  @db.VarChar(999)
+  cpf                    String?  @db.VarChar(500)
+  rg                     String?  @db.VarChar(60)
+  data_nascimento        String?  @db.VarChar(60)
+  nome_pai               String?  @db.VarChar(999)
+  nome_mae               String?  @db.VarChar(999)
+  natural                String?  @db.VarChar(999)
+  escolaridade           String?  @db.VarChar(250)
+  profissao              String?  @db.VarChar(250)
+  denominacao            String?  @db.VarChar(700)
+  batismo_aguas          String?  @db.VarChar(100)
+  endereco_cep           String?  @db.VarChar(999)
+  endereco_rua           String?  @db.VarChar(999)
+  endereco_numero        String?  @db.VarChar(45)
+  endereco_complemento   String?  @db.VarChar(250)
+  endereco_bairro        String?  @db.VarChar(250)
+  endereco_cidade        String?  @db.VarChar(250)
+  endereco_uf            String?  @db.VarChar(250)
+  endereco_telefone      String?  @db.VarChar(150)
+  endereco_celular       String?  @db.VarChar(150)
+  observacao             String?  @db.VarChar(999)
+  status                 Int?
+  id_modulo              Int?
+  id_aluno_hash          String?  @db.VarChar(300)
+  id_modalidade          Int?
+  cpf_hash               String?  @db.VarChar(100)
+  id_nucleo              Int?
+  data_nascimento_banco  DateTime?
+}
+
+model tb_modulo {
+  id_modulo      Int     @id
+  nome_modulo    String? @db.VarChar(999)
+  quantidade     Int?
+  valor          Decimal? @db.Decimal(10,2)
+  id_modalidade  Int?
+}
+
+model tb_modalidade {
+  id_modalidade Int     @id
+  descricao     String? @db.VarChar(255)
+  sigla         String? @db.VarChar(100)
+}
+
+model tb_nucleo {
+  id_nucleo Int     @id
+  nome      String? @db.VarChar(999)
+  cidade    String? @db.VarChar(999)
+  uf        String? @db.VarChar(2)
+}
+
+model tb_pagamentos {
+  id_pagamento      Int       @id
+  id_aluno          Int?
+  valor             Decimal?  @db.Decimal(10,2)
+  data_pagamento    DateTime?
+  referencia        String?   @db.VarChar(100)
+  forma_pagamento   String?   @db.VarChar(100)
+  observacao        String?   @db.VarChar(255)
+  status_pagamento  String?   @db.VarChar(100)
+}
+
+model tb_certificados {
+  id_certificado    Int     @id
+  id_aluno          Int?
+  data_emissao      DateTime?
+  arquivo           String? @db.VarChar(255)
+  status_certificado String? @db.VarChar(100)
+}
+
+model tb_materia_diaconos {
+  id_materia_diaconos Int     @id
+  nome                String? @db.VarChar(255)
+  status              Int?
+}
+
+model tb_nivel {
+  id_nivel Int     @id
+  nome     String? @db.VarChar(255)
+  status   Int?
+}
+
+model tb_nota_aluno {
+  id_nota      Int     @id
+  id_aluno     Int?
+  id_modulo    Int?
+  nota         Decimal? @db.Decimal(5,2)
+  observacao   String?  @db.VarChar(255)
+}
+
+model tb_plano_contas {
+  id_plano       Int     @id
+  descricao      String? @db.VarChar(255)
+  tipo           String? @db.VarChar(100)
+  observacao     String? @db.VarChar(255)
+  status_plano   Int?
+}
+
+model tb_presenca {
+  id_presenca  Int       @id
+  id_aluno     Int?
+  id_modulo    Int?
+  data         DateTime?
+  presente     Boolean?
+}
+
+model tb_presenca_aula_aluno {
+  id_presenca_aula_aluno Int      @id
+  id_aluno               Int?
+  id_aula                Int?
+  presente               Boolean?
+  observacao             String?  @db.VarChar(255)
+}
+
+model tb_usuario {
+  id_usuario Int     @id
+  nome       String? @db.VarChar(255)
+  email      String? @db.VarChar(255)
+  senha      String? @db.VarChar(255)
+  status     Int?
+  nivel      Int?
+}
+
+model tb_contas {
+  id_conta    Int     @id
+  descricao   String? @db.VarChar(255)
+  valor       Decimal? @db.Decimal(10,2)
+  data_lanc   DateTime?
+  tipo        String? @db.VarChar(100)
+  observacao  String? @db.VarChar(255)
+}
+
+model tb_contas_pagar {
+  id_conta_pagar Int     @id
+  descricao      String? @db.VarChar(255)
+  valor          Decimal? @db.Decimal(10,2)
+  vencimento     DateTime?
+  pago           Boolean?
+}
+
+model tb_contas_receber {
+  id_conta_receber Int     @id
+  descricao        String? @db.VarChar(255)
+  valor            Decimal? @db.Decimal(10,2)
+  recebimento      DateTime?
+  recebido         Boolean?
+}
+
+model tb_fornecedor {
+  id_fornecedor Int     @id
+  nome          String? @db.VarChar(255)
+  telefone      String? @db.VarChar(100)
+  email         String? @db.VarChar(255)
+  endereco      String? @db.VarChar(255)
+}
+
+model tb_log_acessos {
+  id_log    Int     @id
+  usuario   String? @db.VarChar(255)
+  datahora  DateTime?
+  acao      String? @db.VarChar(255)
+}
+
+model tb_materia {
+  id_materia  Int     @id
+  nome        String? @db.VarChar(255)
+  id_modulo   Int?
+  status      Int?
+}
+
+model tb_provas {
+  id_prova      Int     @id
+  id_aluno      Int?
+  id_modulo     Int?
+  nota          Decimal? @db.Decimal(5,2)
+  data_realizacao DateTime?
+}
+
+model tb_tipo_pagamento {
+  id_tipo_pagamento Int     @id
+  descricao         String? @db.VarChar(255)
+}
+
+model tb_aulas_novas {
+  id_aula_nova Int     @id
+  titulo       String? @db.VarChar(255)
+  descricao    String? @db.VarChar(255)
+  data         DateTime?
+  id_modulo    Int?
+}
+
+model tb_aulas_diaconos {
+  id_aula_diaconos Int     @id
+  titulo          String? @db.VarChar(255)
+  descricao       String? @db.VarChar(255)
+  data            DateTime?
+}
+
+model tb_aulas {
+  id_aula   Int     @id
+  titulo    String? @db.VarChar(255)
+  descricao String? @db.VarChar(255)
+  data      DateTime?
+  id_modulo Int?
+}
