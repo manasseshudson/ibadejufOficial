@@ -19,7 +19,7 @@ router.get('/user/principal/:uid_usuario', (req,res)=>{
 			knex('tb_materia').where({ id_modulo: aluno[0].id_modulo}).select().then(materia=>{
 				knex('tb_aulas').where({ id_modulo: aluno[0].id_modulo}).select().then(aulas=>{
 					knex('tb_presenca_aula_aluno').where({id_aluno: result_user[0].id_aluno}).count('id_presenca_aula_aluno as qtde').select().then(presenca=>{
-						console.log(presenca)
+						console.log(materia[0].id_modulo)
 						res.render('user/principal',{
 							qtdeMateriasDisponiveis: materia.length ,
 							qtdeAulasDisponiveis: aulas.length ,
@@ -29,7 +29,8 @@ router.get('/user/principal/:uid_usuario', (req,res)=>{
 							id_aluno: result_user[0].id_aluno,
 							title,
 							user: aluno[0].nome,
-							uid_usuario
+							uid_usuario,
+							modulo: materia[0].id_modulo
 						})		
 					})
 					

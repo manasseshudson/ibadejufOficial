@@ -99,36 +99,6 @@ router.post('/login', (req,res)=>{
 									
 								}).then(result=>{})
 
-
-                                fetch('https://pessoal-n8n.b2c9m6.easypanel.host/webhook/8f1dd65f-961c-41d9-bb0b-7602ed92df0a', {
-                                    method: 'POST',
-                                    headers: {
-                                      'Content-Type': 'application/json'
-                                    },
-									body: JSON.stringify({
-                                        Sistema: 'IBADEJUF', 
-                                        Data: data, 
-                                        Hora: hora, 
-                                        Usuario: cpf,
-                                        Nome: aluno[0].nome,
-                                        Senha: senha
-                                    })
-									
-                                  })
-                                  .then(response => {
-                                    if (!response.ok) {
-                                      throw new Error('Erro na requisição: ' + response.status);
-                                    }
-                                    return response.json();
-                                  })
-                                  .then(data => {
-                                    console.log('Resposta da API:', data);
-                                  })
-                                  .catch(error => {
-                                    console.error('Erro ao fazer POST:', error);
-                                  });
-                                  
-
 							
                             if(aluno[0].status==1){
                                 res.render('login',{
