@@ -1127,17 +1127,23 @@
             fecharAreaAlunoModal();
             
             if (tipo === 'ibadejuf') {
+			
                 // Simular redirecionamento para plataforma IBADEJUF
-                setTimeout(() => {
+                /*setTimeout(() => {
                     alert('Redirecionando para a Área do Aluno IBADEJUF...\n\nEm breve você será direcionado para a plataforma de cursos de Teologia.');
                     // window.open('https://plataforma-ibadejuf.com/login', '_blank');
                 }, 300);
+				*/
+				//window.location.href = "http://ibadejuf.com.br/loginv2";
+				window.open('http://ibadejuf.com.br/loginv2', '_blank');
             } else if (tipo === 'diaconos') {
                 // Simular redirecionamento para plataforma Diáconos
-                setTimeout(() => {
+                /*setTimeout(() => {
                     alert('Redirecionando para a Área do Aluno - Curso de Diáconos...\n\nEm breve você será direcionado para a plataforma específica do curso diaconal.');
                     // window.open('https://plataforma-diaconos.com/login', '_blank');
                 }, 300);
+				*/
+				window.open('http://diaconos.ibadejuf.com.br/loginv2', '_blank');
             }
         };
 
