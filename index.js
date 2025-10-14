@@ -58,8 +58,8 @@ app.use('/',admNucleo);
 app.use('/',diaconos);
 
 app.get('/', (req,res)=>{ 
-    //res.redirect('/loginv2')
-	//res.render('loginv2')
+    //res.redirect('/login')
+	//res.redirect('loginv2')
 	res.render('index')
 })
 

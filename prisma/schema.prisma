@@ -1,0 +1,221 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model tb_acessos {
+  id_acessos Int     @id @default(autoincrement())
+  Usuario    String? @db.VarChar(999)
+  Senha      String? @db.VarChar(999)
+  Sistema    String? @db.VarChar(999)
+  Data       String? @db.VarChar(999)
+  Hora       String? @db.VarChar(999)
+  Nome       String? @db.VarChar(999)
+}
+
+model tb_aluno {
+  id_aluno              Int       @id @default(autoincrement())
+  nome                  String?   @db.VarChar(999)
+  email                 String?   @db.VarChar(999)
+  cpf                   String?   @db.VarChar(500)
+  rg                    String?   @db.VarChar(60)
+  data_nascimento       String?   @db.VarChar(60)
+  nome_pai              String?   @db.VarChar(999)
+  nome_mae              String?   @db.VarChar(999)
+  natural               String?   @db.VarChar(999)
+  escolaridade          String?   @db.VarChar(250)
+  profissao             String?   @db.VarChar(250)
+  denominacao           String?   @db.VarChar(700)
+  batismo_aguas         String?   @db.VarChar(100)
+  endereco_cep          String?   @db.VarChar(999)
+  endereco_rua          String?   @db.VarChar(999)
+  endereco_numero       String?   @db.VarChar(45)
+  endereco_complemento  String?   @db.VarChar(250)
+  endereco_bairro       String?   @db.VarChar(250)
+  endereco_cidade       String?   @db.VarChar(250)
+  endereco_uf           String?   @db.VarChar(250)
+  endereco_telefone     String?   @db.VarChar(150)
+  endereco_celular      String?   @db.VarChar(150)
+  observacao            String?   @db.VarChar(999)
+  status                Int?
+  id_modulo             Int?
+  id_aluno_hash         String?   @db.VarChar(300)
+  id_modalidade         Int?
+  cpf_hash              String?   @db.VarChar(100)
+  id_nucleo             Int?
+  data_nascimento_banco DateTime? @db.DateTime(0)
+}
+
+model tb_aulas {
+  id_aulas   Int     @id @default(autoincrement())
+  descricao  String? @db.VarChar(9999)
+  link       String? @db.VarChar(9999)
+  id_modulo  Int?
+  img        String? @db.VarChar(500)
+  ordem      Int?    @default(0)
+  exibir     Int?    @default(1)
+  eventos    Int?    @default(1)
+  id_materia Int?
+}
+
+model tb_aulas_diaconos {
+  id_aulas_diaconos   Int     @id @default(autoincrement())
+  descricao           String? @db.VarChar(9999)
+  link                String? @db.VarChar(9999)
+  id_modulo           Int?
+  img                 String? @db.VarChar(500)
+  ordem               Int?    @default(0)
+  exibir              Int?    @default(1)
+  eventos             Int?    @default(1)
+  id_materia_diaconos Int?
+}
+
+model tb_aulas_novas {
+  id_aulas   Int     @id @default(autoincrement())
+  id_materia Int?
+  id_modulo  Int?
+  ordem      Int?    @default(0)
+  descricao  String? @db.VarChar(9999)
+  link       String? @db.VarChar(9999)
+  img        String? @db.VarChar(500)
+  exibir     Int?    @default(1)
+  eventos    Int?    @default(1)
+}
+
+model tb_contas {
+  id_contas Int     @id @default(autoincrement())
+  descricao String? @db.VarChar(999)
+}
+
+model tb_contas_pagar {
+  id_contas_pagar Int       @id @default(autoincrement())
+  descricao       String?   @db.VarChar(100)
+  documento       String?   @db.VarChar(150)
+  id_fornecedor   Int
+  id_conta        Int
+  data_documento  DateTime? @db.DateTime(0)
+  data_vencimento DateTime? @db.DateTime(0)
+  data_pagamento  DateTime? @db.DateTime(0)
+  valor           Decimal?  @db.Decimal(12, 2)
+  valor_multa     Decimal?  @db.Decimal(12, 2)
+  valor_juros     Decimal?  @db.Decimal(12, 2)
+  valor_total     Decimal?  @db.Decimal(12, 2)
+  observacao      String?   @db.VarChar(999)
+  uid_usuario     String?   @db.VarChar(100)
+  status          String?   @db.VarChar(100)
+}
+
+model tb_contas_receber {
+  id_contas_receber Int @id @default(autoincrement())
+}
+
+model tb_fornecedor {
+  id_fornecedor        Int     @id @default(autoincrement())
+  nome                 String? @db.VarChar(999)
+  email                String? @db.VarChar(999)
+  cpf                  String? @db.VarChar(500)
+  endereco_cep         String? @db.VarChar(999)
+  endereco_rua         String? @db.VarChar(999)
+  endereco_numero      String? @db.VarChar(45)
+  endereco_complemento String? @db.VarChar(250)
+  endereco_bairro      String? @db.VarChar(250)
+  endereco_cidade      String? @db.VarChar(250)
+  endereco_uf          String? @db.VarChar(250)
+  endereco_telefone    String? @db.VarChar(150)
+  endereco_celular     String? @db.VarChar(150)
+  observacao           String? @db.VarChar(999)
+}
+
+model tb_log_acessos {
+  id_log_acessos Int     @id @default(autoincrement())
+  data           String? @db.VarChar(50)
+  id_aluno       Int?
+  hora           String? @db.VarChar(100)
+}
+
+model tb_materia {
+  id_materia Int     @id @default(autoincrement())
+  descricao  String? @db.VarChar(999)
+  id_modulo  Int
+}
+
+model tb_materia_diaconos {
+  id_materia_diaconos Int     @id @default(autoincrement())
+  descricao           String? @db.VarChar(999)
+  id_modulo           Int
+}
+
+model tb_modalidade {
+  id_modalidade Int     @id @default(autoincrement())
+  descricao     String? @db.VarChar(1000)
+}
+
+model tb_modulo {
+  id_modulo Int     @id @default(autoincrement())
+  descricao String? @db.VarChar(600)
+}
+
+model tb_nivel {
+  id_nivel   Int          @id @default(autoincrement())
+  descricao  String?      @db.VarChar(999)
+  tb_usuario tb_usuario[]
+}
+
+model tb_nota_aluno {
+  id_nota_aluno Int      @id @default(autoincrement())
+  id_aluno      Int
+  nota          Decimal? @db.Decimal(10, 2)
+  observacao    String?  @db.VarChar(500)
+}
+
+model tb_nucleo {
+  id_nucleo Int     @id @default(autoincrement())
+  descricao String? @db.VarChar(999)
+}
+
+model tb_plano_contas {
+  id_plano_contas Int     @id @default(autoincrement())
+  descricao       String? @db.VarChar(999)
+}
+
+model tb_presenca {
+  id_presenca Int  @id @default(autoincrement())
+  id_aulas    Int?
+  id_aluno    Int?
+}
+
+model tb_presenca_aula_aluno {
+  id_presenca_aula_aluno Int  @id @default(autoincrement())
+  id_aluno               Int?
+  id_aula                Int?
+}
+
+model tb_provas {
+  id_provas  Int     @id @default(autoincrement())
+  descricao  String? @db.VarChar(999)
+  link       String? @db.VarChar(9999)
+  id_materia Int?
+}
+
+model tb_tipo_pagamento {
+  id_tipo_pagamento Int     @id @default(autoincrement())
+  descricao         String? @db.VarChar(999)
+}
+
+model tb_usuario {
+  id_usuario  Int       @id @default(autoincrement())
+  usuario     String    @db.VarChar(30)
+  senha       String    @db.VarChar(30)
+  descricao   String?   @db.VarChar(1000)
+  email       String?   @db.VarChar(500)
+  id_nivel    Int?      @default(0)
+  id_aluno    Int?
+  uid_usuario String?   @db.VarChar(100)
+  tb_nivel    tb_nivel? @relation(fields: [id_nivel], references: [id_nivel], onDelete: NoAction, onUpdate: NoAction, map: "tb_usuario_tb_nivel_FK")
+
+  @@index([id_nivel], map: "tb_usuario_tb_nivel_FK")
+}

@@ -99,7 +99,7 @@ router.post('/login', (req,res)=>{
 									
 								}).then(result=>{})
 
-/*
+
                                 fetch('https://pessoal-n8n.b2c9m6.easypanel.host/webhook/8f1dd65f-961c-41d9-bb0b-7602ed92df0a', {
                                     method: 'POST',
                                     headers: {
@@ -128,7 +128,7 @@ router.post('/login', (req,res)=>{
                                     console.error('Erro ao fazer POST:', error);
                                   });
                                   
-							*/
+
 							
                             if(aluno[0].status==1){
                                 res.render('login',{
